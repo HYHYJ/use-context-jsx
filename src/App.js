@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Page from "./components/Page";
+import { proxy, useSnapshot } from "valtio";
+
+const state = proxy({
+  isDark: 0,
+});
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  return <Page isDark={isDark} toggleThema={() => setIsDark(!isDark)} />;
+  const { isDark } = useSnapshot(state);
+  const changeDark = () => {
+    return !isDark;
+  };
+  return <Page isDark={isDark} toggleThema={changeDark} />;
 }
 
 export default App;
