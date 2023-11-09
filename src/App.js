@@ -1,21 +1,14 @@
-// import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Page from "./components/Page";
-// import useStore from "./store.js";
-import { atom, useRecoilState } from "recoil";
+import { atom, useAtom } from "jotai";
+
+const isDark = atom(0);
 
 function App() {
-  let isDark = atom({
-    key: "isDark",
-    default: 0,
-  });
-
-  const [dark, setdark] = useRecoilState(isDark);
-
-  const setDarkFunction = (event) => {
-    setdark(!dark);
-  };
-  return <Page isDark={dark} toggleThema={setDarkFunction} />;
+  const [dark, setIsDark] = useAtom(isDark);
+  const changeDark = (e) => setIsDark(!dark);
+  return <Page isDark={dark} toggleThema={changeDark} />;
 }
 
 export default App;

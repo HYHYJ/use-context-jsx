@@ -3,15 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { RecoilRoot } from "recoil";
+import { Provider } from "jotai"; //조타이는 Provider로 감싸줘야한다.
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <RecoilRoot>
+  <Provider>
+    <React.StrictMode>
       <App />
-    </RecoilRoot>
-  </React.StrictMode>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
